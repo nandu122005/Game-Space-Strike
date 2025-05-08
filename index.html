@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Space Strike</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #121212;
+        color: white;
+    }
+    
+    .game-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .game-box {
+        width: 180px; /* Fixed Size */
+        height: 250px; /* Fixed Size */
+        padding: 15px;
+        background: #333;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+    }
+    
+    .game-box:hover {
+        transform: scale(1.05);
+    }
+    
+    .game-box img {
+        width: 100%;
+        height: 140px; /* Fixed image size */
+        object-fit: cover; /* Ensures proper scaling */
+        border-radius: 5px;
+    }
+    
+    .game-box p {
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Game Space Strike</h1>
+    <div class="game-container">
+        <div class="game-box" onclick="goto()">
+            <img src="snake-ladders.png" alt="Snake & Ladders">
+            <p>Snake & Ladders</p>
+        </div>
+        <div class="game-box" onclick="goin()">
+            <img src="memory_card.png" alt="memory_card_game">
+            <p>memory card</p>
+        </div>
+        <div class="game-box" onclick="goget()">
+            <img src="rps.png" alt="Rock-Paper-Scissors">
+            <p>Rock-Paper-Scissors</p>
+        </div>
+        <div class="game-box" onclick="gofor()">
+            <img src="tic-tac.png" alt="Dice Roller">
+            <p>Tic Tac Toe</p>
+        </div>
+    </div>
+
+    <script >
+        function goto(){
+            window.location.href="snake-ladders.html"
+        }
+        function goin(){
+            window.location.href="memory_card.html"
+        }
+        function gofor(){
+            window.location.href="tic-tac.html"
+        }
+        function goget(){
+            window.location.href="rps.html"
+        }
+    </script>
+
+</body>
+</html>

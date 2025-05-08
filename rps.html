@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors Tutorial</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: url('https://images.unsplash.com/photo-1520975910017-6b43f2f1d6b2?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        text-align: center;
+      }
+
+      #game {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        backdrop-filter: blur(5px);
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 20px;
+        margin: 30px auto;
+        width: fit-content;
+      }
+
+      h1 {
+        margin: 10px;
+        font-size: 24px;
+      }
+
+      button {
+        background-color: #ff9800;
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #e67e22;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="game"></div>
+
+    <script>
+      const userChoiceDisplay = document.createElement('h1');
+      const computerChoiceDisplay = document.createElement('h1');
+      const resultDisplay = document.createElement('h1');
+      const gameGrid = document.getElementById('game');
+      gameGrid.append(userChoiceDisplay, computerChoiceDisplay, resultDisplay);
+
+      const choices = ['rock', 'paper', 'scissors'];
+      let userChoice;
+      let computerChoice;
+
+      const handleClick = (e) => {
+        userChoice = e.target.id;
+        userChoiceDisplay.innerHTML = 'User choice: ' + userChoice;
+        generateComputerChoice();
+        getResult();
+      };
+
+      const generateComputerChoice = () => {
+        const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+        computerChoice = randomChoice;
+        computerChoiceDisplay.innerHTML = 'Computer choice: ' + computerChoice;
+      };
+
+      choices.forEach(choice => {
+        const button = document.createElement('button');
+        button.id = choice;
+        button.innerHTML = choice;
+        button.addEventListener('click', handleClick);
+        gameGrid.appendChild(button);
+      });
+
+      const getResult = () => {
+        switch (userChoice + computerChoice) {
+          case 'scissorspaper':
+          case 'rockscissors':
+          case 'paperrock':
+            resultDisplay.innerHTML = "YOU WIN!";
+            break;
+          case 'paperscissors':
+          case 'scissorsrock':
+          case 'rockpaper':
+            resultDisplay.innerHTML = "YOU LOSE!";
+            break;
+          case 'paperpaper':
+          case 'scissorsscissors':
+          case 'rockrock':
+            resultDisplay.innerHTML = "IT'S A DRAW!";
+            break;
+        }
+      };
+    </script>
+  </body>
+</html>
